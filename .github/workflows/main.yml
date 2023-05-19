@@ -1,0 +1,22 @@
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  deploy:
+    name: Upload to Amazon S3
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run
+      run: echo "Hello"
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-region: us-east-1
+        aws-access-key-id: ${{ secrets.awsaccesskeyid }}
+        aws-secret-access-key: ${{ secrets.awssecretaccesskey }}
+        role-duration-seconds: 1000
+    - name: Run Aws region command
+      run: |
+        aws configure list | grep region | awk '{print $2}'
