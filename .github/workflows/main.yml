@@ -14,8 +14,8 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v2
       with:
         aws-region: us-east-1
-        aws-access-key-id: ${{ secrets.awsaccesskeyid }}
-        aws-secret-access-key: ${{ secrets.awssecretaccesskey }}
+        aws-access-key-id: ${{ secrets.AWSACCESSKEYID }}
+        aws-secret-access-key: ${{ secrets.AWSSECRETACCESSKEY }}
         role-duration-seconds: 1000
     - name: Run Aws region command
       run: |
