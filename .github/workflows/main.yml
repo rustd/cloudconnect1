@@ -1,11 +1,9 @@
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 jobs:
   deploy:
-    name: Upload to Amazon S3
+    name: AWS Secret
     runs-on: ubuntu-latest
     steps:
     - name: Run
@@ -22,3 +20,8 @@ jobs:
     - name: Run Aws region command
       run: |
         aws configure list | grep region | awk '{print $2}'
+    - name: Step name
+      uses: aws-actions/aws-secretsmanager-get-secrets@v1
+      with:
+        secret-ids: |
+          test_secret_in_Harness
