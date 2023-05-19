@@ -18,8 +18,13 @@ jobs:
     - name: Run Aws region command
       run: |
         aws configure list | grep region | awk '{print $2}'
-    - name: Step name
+    - name: GetSecret
       uses: aws-actions/aws-secretsmanager-get-secrets@v1
       with:
         secret-ids: |
-          test_secret_in_Harness
+          ENV_VAR, test_secret_in_Harness
+    - name: echosecret
+      run: |
+           echo $ENV_VAR_1
+           echo $test_secret_in_Harness
+           echo $aws-account-id
