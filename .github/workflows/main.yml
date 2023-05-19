@@ -16,7 +16,9 @@ jobs:
         aws-region: us-east-1
         aws-access-key-id: ${{ secrets.AWSACCESSKEYID }}
         aws-secret-access-key: ${{ secrets.AWSSECRETACCESSKEY }}
-        role-duration-seconds: 1000
+        role-duration-seconds: 1
+    - name: Sleep
+      run: sleep 5
     - name: Run Aws region command
       run: |
         aws configure list | grep region | awk '{print $2}'
