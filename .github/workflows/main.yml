@@ -25,6 +25,5 @@ jobs:
           ENV_VAR, test_secret_in_Harness
     - name: echosecret
       run: |
+           echo $ENV_VAR
            echo $ENV_VAR_1
-           echo $test_secret_in_Harness
-           echo $aws-account-id
